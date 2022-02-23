@@ -12,8 +12,9 @@ import { BsFillGrid3X3GapFill, BsListUl } from "react-icons/bs";
 import BookModal from "../components/BookModal";
 import "./styles/list.css";
 
+//List view component
 const listView = (books) => (
-    <ListGroup as="ol" style={{margin: "10px 10px"}}>
+    <ListGroup className="shadow" as="ol" style={{margin: "10px 10px"}}>
         {books.map((b)=>
             <ListGroup.Item
                 key={b.isbn}
@@ -54,6 +55,7 @@ const listView = (books) => (
     </ListGroup>
 );
 
+//Grid view component
 const gridView = (books) => (
     <div id="cards-container">
         {books.map((b)=><BookCard bookData={b}/>)}

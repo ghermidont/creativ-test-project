@@ -18,6 +18,7 @@
     color: black;
     font-weight: bold;
     padding: 0px 0px 0px 0px;
+    text-shadow: 2px 2px #ff0000;
 }
 
 #image-section {

@@ -5,7 +5,7 @@ import { Route, Switch } from "react-router";
 import "./App.css";
 
 // Import pages
-const HomePage = lazy( () => import( "./pages/homePage" ) );
+const HomePage = lazy( () => import( "./pages/homePage" ));
 
 // Import components
 const Header = lazy(() => import("./components/Header"));

@@ -4,8 +4,8 @@ import Badge from "react-bootstrap/Badge";
 import BookModal from "./BookModal";
 
 function BookCard({bookData}) {
-       return(
-           <Card style={{ width: "18rem", padding: "10px 10px", marginBottom: "10px"}}>
+    return(
+        <Card style={{ width: "18rem", padding: "10px 10px", marginBottom: "10px"}} className="shadow">
             <Card.Img variant="top" src={bookData.thumbnailURL} alt="logo"/>
             <Card.Body>
                 <Card.Title>{bookData.title}</Card.Title>
@@ -30,7 +30,7 @@ function BookCard({bookData}) {
                 <BookModal bookData={bookData}/>
             </Card.Body>
         </Card>
-       );
+    );
 }
 
 export default BookCard;

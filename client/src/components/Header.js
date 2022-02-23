@@ -1,18 +1,16 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Logo from "../images/book-vector.png";
 import "./styles/header.css";
 import { Button } from "react-bootstrap";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { BsMoon, BsSun } from "react-icons/bs";
-//import {useThemeContext} from "../context/themeContext";
+import { useThemeContext } from "../context/themeContext";
 
 function Header() {
+    const {theme, handleDarkTheme, handleLightTheme} = useThemeContext();
     // use this for context change
-    const [color, setColor] = useState("Light");
 
-    const handleDarkTheme =() => setColor("Dark");
-    const handleLightTheme =() => setColor("Light");
-    // const {themes, changeTheme} = useThemeContext();
+    useEffect(() => console.log(theme),[theme]);
 
     return (
         <div id="main-container">

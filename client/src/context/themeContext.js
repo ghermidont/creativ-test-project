@@ -1,40 +1,20 @@
-import React, { useContext, useState, useEffect } from "react";
-
-export const themes = {
-    dark: "",
-    light: "white-content",
-};
-
-const authContext = React.createContext({
-    theme: themes.dark,
-    changeTheme: () => {},
-});
+import React, {useContext, useEffect, useState} from "react";
+const authContext = React.createContext();
 
 export function useThemeContext(){
     return useContext(authContext);
 }
 
 export function ThemeContextProvider({ children }) {
-    const [theme, setTheme] = useState(themes.dark);
+    const [theme, setTheme] = useState("Light");
 
-    function changeTheme(theme){
-        setTheme(theme);
-    }
+    const handleDarkTheme =() => setTheme("Dark");
+    const handleLightTheme =() => setTheme("Light");
 
-    useEffect(() => {
-        switch (theme) {
-        case themes.light:
-            document.body.classList.add("white-content");
-            break;
-        case themes.dark:
-        default:
-            document.body.classList.remove("white-content");
-            break;
-        }
-    }, [theme]);
+    useEffect(() => theme==="Dark"?document.body.style.backgroundColor="#5D5C61":document.body.style.backgroundColor="white", [theme]);
 
     return (
-        <authContext.Provider value={{ theme, changeTheme }}>
+        <authContext.Provider value={{ theme, handleDarkTheme, handleLightTheme }}>
             {children}
         </authContext.Provider>
     );
