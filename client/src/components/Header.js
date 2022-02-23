@@ -8,7 +8,7 @@ function Header() {
     const [color, setColor] = useState("Light");
     const [query, setQuery] = useState("");
 
-   // const {themes, changeTheme} = useThemeContext();
+    // const {themes, changeTheme} = useThemeContext();
 
     useEffect(() => {
     //     const searchResult = books.filter( (book) => book.title.includes("Jeep"))
@@ -34,14 +34,14 @@ function Header() {
                 >{color}</Button>
 
                 <InputGroup id="search-bar" className="mb-3">
-                        <FormControl
-                            onChange={(e) => setQuery(e.target.value)}
-                            placeholder="Search.."
-                            value={query}
-                            aria-label="Recipient's username"
-                            aria-describedby="basic-addon2"
-                        />
-                    </InputGroup>
+                    <FormControl
+                        onChange={(e) => setQuery(e.target.value)}
+                        placeholder="Search.."
+                        value={query}
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                    />
+                </InputGroup>
             </section>
         </div>
 

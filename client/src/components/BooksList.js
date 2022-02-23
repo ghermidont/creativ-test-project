@@ -31,25 +31,25 @@ const list = (books) => (
     <ListGroup as="ol" >
 
         {books.books.map((b)=>
-        <ListGroup.Item
-            key={b.isbn}
-            as="li"
-            className="d-flex justify-content-between align-items-start"
-        >
-            <div className="ms-2 me-auto">
-                <div className="fw-bold">{b.title}</div>
-                {b.shortDescription}
-                {b.authors.map((a, index)=>
-                    <div key={index} className="mt-2">
-                        <Badge variant="secondary">{a}</Badge>
-                    </div>
-                )}
-            </div>
-            <h1></h1>
-            {/*<Image >*/}
-            {/*    14*/}
-            {/*</Image>*/}
-        </ListGroup.Item>
+            <ListGroup.Item
+                key={b.isbn}
+                as="li"
+                className="d-flex justify-content-between align-items-start"
+            >
+                <div className="ms-2 me-auto">
+                    <div className="fw-bold">{b.title}</div>
+                    {b.shortDescription}
+                    {b.authors.map((a, index)=>
+                        <div key={index} className="mt-2">
+                            <Badge variant="secondary">{a}</Badge>
+                        </div>
+                    )}
+                </div>
+                <h1></h1>
+                {/*<Image >*/}
+                {/*    14*/}
+                {/*</Image>*/}
+            </ListGroup.Item>
         )}
     </ListGroup>
 );

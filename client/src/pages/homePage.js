@@ -11,10 +11,10 @@ function HomePage() {
     useEffect(() => {
         console.log("useEffect []");
         setLoading(true);
-       // getAppData().then().catch(err => console.log("err", err));
+        // getAppData().then().catch(err => console.log("err", err));
         getBooksRequest().then(res => {
-                setBooks(res.data);
-                setLoading(false);
+            setBooks(res.data);
+            setLoading(false);
             console.log("getBooksRequest() res: ", typeof res.data);
             setBooks(res.data);
             setLoading(false);
@@ -22,7 +22,7 @@ function HomePage() {
         );
         //getAppData();
         //servBooks();
-        }, []);
+    }, []);
 
     return (
         <div>

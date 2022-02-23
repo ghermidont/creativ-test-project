@@ -12,25 +12,25 @@ const Header = lazy(() => import("./components/Header"));
 const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
-  return (
-    <div className="App">
-      <Suspense
-          fallback={
-            <div className="col text-center p-5">
+    return (
+        <div className="App">
+            <Suspense
+                fallback={
+                    <div className="col text-center p-5">
               Page loading...
-            </div>
-          }
-      >
-        <Header />
-        <BrowserRouter>
-          <Switch>
-            <Route exact path="/" component={ HomePage }/>
-          </Switch>
-        </BrowserRouter>
-        <Footer />
-      </Suspense>
-    </div>
-  );
+                    </div>
+                }
+            >
+                <Header />
+                <BrowserRouter>
+                    <Switch>
+                        <Route exact path="/" component={ HomePage }/>
+                    </Switch>
+                </BrowserRouter>
+                <Footer />
+            </Suspense>
+        </div>
+    );
 }
 
 export default App;

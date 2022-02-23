@@ -23,13 +23,13 @@ export function ThemeContextProvider({ children }) {
 
     useEffect(() => {
         switch (theme) {
-            case themes.light:
-                document.body.classList.add("white-content");
-                break;
-            case themes.dark:
-            default:
-                document.body.classList.remove("white-content");
-                break;
+        case themes.light:
+            document.body.classList.add("white-content");
+            break;
+        case themes.dark:
+        default:
+            document.body.classList.remove("white-content");
+            break;
         }
     }, [theme]);
 
