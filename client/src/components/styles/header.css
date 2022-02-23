@@ -1,0 +1,41 @@
+#logo {
+    width: 100px;
+    height: 100px;
+    /*margin: 0 auto;*/
+    /*display: block;*/
+    /*float: left;*/
+    padding: 20px 0px 0px 10px;
+}
+
+#main-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+#title {
+    font-size: 100px;
+    color: black;
+    font-weight: bold;
+    padding: 0px 0px 0px 0px;
+}
+
+#image-section {
+}
+
+#search-section {
+
+}
+
+#search-bar {
+    padding: 20px 10px 0px 0px;
+}
+
+#color-toggle-button {
+    float: right;
+    margin: 20px 10px 0px 0px;
+}
+
+#title-section {
+    text-align: center;
+}
