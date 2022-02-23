@@ -11,6 +11,7 @@ function SearchBar({query, setQuery}) {
             variant="outlined"
             placeholder="Search.."
             value={query}
+            onChange={(e) => setQuery(e.target.value)}
             InputProps={{
                 endAdornment: (
                     <IconButton>

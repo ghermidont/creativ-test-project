@@ -10,8 +10,6 @@ function HomePage() {
     const [query, setQuery] = useState("");
 
     useEffect(() => {
-
-
         console.log("query", query);
     }, [query]);
 
@@ -28,16 +26,26 @@ function HomePage() {
     }, []);
 
     function foundValues(obj, value) {
+        console.log("foundValues obj: ", obj);
         value = String(value).toLowerCase();
-        const asArray = obj&&Object.entries(obj);
-        let filtered = asArray&&asArray.filter(o =>
-            Object.entries(o).some(entry =>
-                String(entry[1]).toLowerCase().includes(value)
-            )
-        );
-        console.log("filtered", filtered);
-        //return <BooksList books={filtered}/>;
-        return <h1>foundValues</h1>;
+        console.log("foundValues value: ", value);
+        //const asArray = obj&&Object.entries(obj);
+        console.log("Object.entries(obj): ", Object.entries(obj));
+        let test = Object
+            .entries(obj)
+            .filter(o=> String(Object.values(o[1])).toLowerCase().includes(value)
+            );
+
+        console.log("test: ", test);
+
+        let objArray = [];
+
+        test.map(i=> objArray.push(i[1]));
+
+        console.log("objArray: ", objArray);
+
+        return <BooksList books={objArray}/>;
+       // return <h1>hello</h1>;
     }
 
     return (
@@ -49,7 +57,7 @@ function HomePage() {
                 {loading ? (
                     <h1>Loading...</h1>
                 ) : (
-                    query===""?<BooksList books={books}/>:foundValues(books.books, query)
+                    query===""?<BooksList books={books.books}/>:foundValues(books.books, query)
                 )}
             </section>
         </div>

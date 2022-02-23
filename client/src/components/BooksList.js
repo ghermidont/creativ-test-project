@@ -1,65 +1,54 @@
 import React, { useState }from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import Badge from "react-bootstrap/Badge";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import BookCard from "./BookCard";
 import { BsFillGrid3X3GapFill, BsListUl } from "react-icons/bs";
 
 import BookModal from "../components/BookModal";
 import "./styles/list.css";
 
-const BookCard = ({bookData}) => (
-    <Card style={{ width: "18rem", padding: "10px 10px", marginBottom: "10px"}}>
-        <Card.Img variant="top" src={bookData.thumbnailURL} alt="logo"/>
-        <Card.Body>
-            <Card.Title>{bookData.title}</Card.Title>
-            <Card.Text>
-                <strong>Authors:</strong>
-                {bookData.authors.map((a, index)=>
-                    <div key={index} className="mt-2">
-                        <ul>
-                            <li style={{padding: "5px 20px 5px 0"}}>{a}</li>
-                        </ul>
-                    </div>
-                )}
-            </Card.Text>
-            <Card.Text>
-                <strong>Category:</strong>
-                {bookData.categories.map((c, index)=>
-                    <div key={index} className="mt-2">
-                        <Badge variant="secondary">{c}</Badge>
-                    </div>
-                )}
-            </Card.Text>
-            <BookModal bookData={bookData}/>
-            {/*<Button variant="primary">Go somewhere</Button>*/}
-        </Card.Body>
-    </Card>
-);
-
 const listView = (books) => (
-    <ListGroup as="ol" >
-
-        {books.books.map((b)=>
+    <ListGroup as="ol" style={{margin: "10px 10px"}}>
+        {books.map((b)=>
             <ListGroup.Item
                 key={b.isbn}
                 as="li"
                 className="d-flex justify-content-between align-items-start"
             >
-                <div className="ms-2 me-auto">
-                    <div className="fw-bold">{b.title}</div>
-                    {b.shortDescription}
-                    {b.authors.map((a, index)=>
-                        <div key={index} className="mt-2">
-                            <Badge variant="secondary">{a}</Badge>
-                        </div>
-                    )}
-                </div>
-                <h1></h1>
-                {/*<Image >*/}
-                {/*    14*/}
-                {/*</Image>*/}
+                <Container>
+                    <Row>
+                        <Col><strong style={{fontSize: "25px"}}>{b.title}</strong></Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            <img src={b.thumbnailURL} alt="logo"/>
+                        </Col>
+                        <Col xs={5}> <strong>Authors:</strong>
+                            {b.authors.map((a, index)=>
+                                <div key={index} className="mt-2">
+                                    <ul>
+                                        <li style={{padding: "5px 20px 5px 0"}}>{a}</li>
+                                    </ul>
+                                </div>
+                            )}
+                        </Col>
+                        <Col> <strong>Category:</strong>
+                            {b.categories.map((c, index)=>
+                                <div key={index} className="mt-2">
+                                    <Badge variant="secondary">{c}</Badge>
+                                </div>
+                            )}
+                        </Col>
+                        <Col>
+                            <BookModal bookData={b}/>
+                        </Col>
+                    </Row>
+                </Container>
             </ListGroup.Item>
         )}
     </ListGroup>
@@ -67,7 +56,7 @@ const listView = (books) => (
 
 const gridView = (books) => (
     <div id="cards-container">
-        {books.books.map((b)=><BookCard bookData={b}/>)}
+        {books.map((b)=><BookCard bookData={b}/>)}
     </div>
 );
 
