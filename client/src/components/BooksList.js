@@ -2,7 +2,6 @@ import React, { useState }from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
-//import Image from "react-bootstrap/Image";
 import Badge from "react-bootstrap/Badge";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { BsFillGrid3X3GapFill, BsListUl } from "react-icons/bs";
@@ -10,24 +9,36 @@ import { BsFillGrid3X3GapFill, BsListUl } from "react-icons/bs";
 import BookModal from "../components/BookModal";
 import "./styles/list.css";
 
-const BookCard = (bookData) => (
-    <Card style={{ width: "18rem" }}>
+const BookCard = ({bookData}) => (
+    <Card style={{ width: "18rem", padding: "10px 10px", marginBottom: "10px"}}>
         <Card.Img variant="top" src={bookData.thumbnailURL} alt="logo"/>
         <Card.Body>
             <Card.Title>{bookData.title}</Card.Title>
             <Card.Text>
-                {bookData.shortDescription}
+                <strong>Authors:</strong>
+                {bookData.authors.map((a, index)=>
+                    <div key={index} className="mt-2">
+                        <ul>
+                            <li style={{padding: "5px 20px 5px 0"}}>{a}</li>
+                        </ul>
+                    </div>
+                )}
             </Card.Text>
             <Card.Text>
-                {/*{bookData.authors.[0]}*/}
+                <strong>Category:</strong>
+                {bookData.categories.map((c, index)=>
+                    <div key={index} className="mt-2">
+                        <Badge variant="secondary">{c}</Badge>
+                    </div>
+                )}
             </Card.Text>
-            <BookModal bookData/>
+            <BookModal bookData={bookData}/>
             {/*<Button variant="primary">Go somewhere</Button>*/}
         </Card.Body>
     </Card>
 );
 
-const list = (books) => (
+const listView = (books) => (
     <ListGroup as="ol" >
 
         {books.books.map((b)=>
@@ -54,9 +65,9 @@ const list = (books) => (
     </ListGroup>
 );
 
-const grid = (books) => (
+const gridView = (books) => (
     <div id="cards-container">
-        {books.books.map((b)=><BookCard b/>)}
+        {books.books.map((b)=><BookCard bookData={b}/>)}
     </div>
 );
 
@@ -69,12 +80,12 @@ function BooksList({books}) {
     return (
         <div>
             <h1>Books list</h1>
-            <ButtonGroup aria-label="Basic example">
+            <ButtonGroup style={{margin: "10px 10px"}} aria-label="Basic example">
                 <Button variant="secondary" onClick={handleGridView}><BsFillGrid3X3GapFill /></Button>
                 <Button variant="secondary" onClick={handleListView}><BsListUl /></Button>
             </ButtonGroup>
             <section>
-                {displayType === "list" ? list(books) : grid(books)}
+                {displayType === "list" ? listView(books) : gridView(books)}
             </section>
         </div>
     );

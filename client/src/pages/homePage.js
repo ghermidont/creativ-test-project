@@ -10,8 +10,8 @@ function HomePage() {
     const [query, setQuery] = useState("");
 
     useEffect(() => {
-        //     const searchResult = books.filter( (book) => book.title.includes("Jeep"))
-        //     setBooks(searchResult);
+
+
         console.log("query", query);
     }, [query]);
 
@@ -22,28 +22,36 @@ function HomePage() {
         getBooksRequest().then(res => {
             setBooks(res.data);
             setLoading(false);
-            console.log("getBooksRequest() res: ", typeof res.data);
-            setBooks(res.data);
-            setLoading(false);
+            console.log("getBooksRequest() res: ", res.data);
         }
         );
     }, []);
 
-    function foundValues(arr, value) {
+    function foundValues(obj, value) {
         value = String(value).toLowerCase();
-        let filtered = arr.filter(o =>
+        const asArray = obj&&Object.entries(obj);
+        let filtered = asArray&&asArray.filter(o =>
             Object.entries(o).some(entry =>
                 String(entry[1]).toLowerCase().includes(value)
             )
         );
-        return <BooksList books={filtered}/>;
+        console.log("filtered", filtered);
+        //return <BooksList books={filtered}/>;
+        return <h1>foundValues</h1>;
     }
 
     return (
         <div>
-            <SearchBar query={query} setQuery={setQuery}/>
-
-            {!loading&&query!==""?<BooksList books={books}/>:foundValues(books.books, query)}
+            <section>
+                <SearchBar query={query} setQuery={setQuery}/>
+            </section>
+            <section>
+                {loading ? (
+                    <h1>Loading...</h1>
+                ) : (
+                    query===""?<BooksList books={books}/>:foundValues(books.books, query)
+                )}
+            </section>
         </div>
     );
 }

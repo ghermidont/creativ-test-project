@@ -28,7 +28,9 @@
 }
 
 #search-bar {
-    padding: 20px 10px 0px 0px;
+    /*padding: 20px 10px 0px 0px;*/
+    width: 300px;
+    float: right !important;
 }
 
 #color-toggle-button {
