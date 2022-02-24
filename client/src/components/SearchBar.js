@@ -1,13 +1,14 @@
 import React from "react";
-//import { FormControl, InputGroup, Image } from "react-bootstrap";
-//import SearchIcon from "../images/SearchIcon.png";
 import {  TextField, IconButton } from "@material-ui/core";
 import { SearchOutlined } from "@material-ui/icons";
+import { useThemeContext } from "../context/themeContext";
 
 function SearchBar({query, setQuery}) {
+    const { theme } = useThemeContext();
+
     return (
         <TextField
-            id="search-bar"
+            id={`search-bar-${theme}`}
             variant="outlined"
             placeholder="Search.."
             value={query}
@@ -20,17 +21,6 @@ function SearchBar({query, setQuery}) {
                 ),
             }}
         />
-
-    // <InputGroup id="search-bar" className="mb-3">
-    //     <FormControl
-    //         onChange={(e) => setQuery(e.target.value)}
-    //         placeholder="Search.."
-    //         value={query}
-    //         aria-label="Recipient's username"
-    //         aria-describedby="basic-addon2"
-    //     />
-    //     <InputGroup.Text id="basic-addon2"><Image src={SearchIcon}/></InputGroup.Text>
-    // </InputGroup>
     );
 }
 

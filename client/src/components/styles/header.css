@@ -1,9 +1,6 @@
 #logo {
     width: 100px;
     height: 100px;
-    /*margin: 0 auto;*/
-    /*display: block;*/
-    /*float: left;*/
     padding: 20px 0px 0px 10px;
 }
 
@@ -21,17 +18,13 @@
     text-shadow: 2px 2px #ff0000;
 }
 
-#image-section {
-}
-
-#search-section {
-
-}
-
-#search-bar {
-    /*padding: 20px 10px 0px 0px;*/
+#search-bar-Light {
     width: 300px;
-    float: right !important;
+}
+
+#search-bar-Dark {
+    background: azure;
+    width: 300px;
 }
 
 #color-toggle-button {
