@@ -8,9 +8,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import BookCard from "./BookCard";
 import { BsFillGrid3X3GapFill, BsListUl } from "react-icons/bs";
-
 import BookModal from "../components/BookModal";
 import "./styles/list.css";
+import placeholder from "../images/placehold.gif";
 
 //List view component
 const listView = (books) => (
@@ -27,16 +27,14 @@ const listView = (books) => (
                     </Row>
                     <Row>
                         <Col>
-                            <img src={b.thumbnailURL} alt="logo"/>
+                            <img src={b.thumbnailURL!==null?b.thumbnailURL:placeholder} alt="logo"/>
                         </Col>
                         <Col xs={5}> <strong>Authors:</strong>
-                            {b.authors.map((a, index)=>
-                                <div key={index} className="mt-2">
-                                    <ul>
-                                        <li style={{padding: "5px 20px 5px 0"}}>{a}</li>
-                                    </ul>
-                                </div>
-                            )}
+                            <ul>
+                                {b.authors.map((a, index)=>
+                                    a!==""&&<li key={index} style={{padding: "5px 20px 5px 0"}}>{a}</li>
+                                )}
+                            </ul>
                         </Col>
                         <Col> <strong>Category:</strong>
                             {b.categories.map((c, index)=>
