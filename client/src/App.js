@@ -17,7 +17,7 @@ function App() {
             <Suspense
                 fallback={
                     <div className="col text-center p-5">
-              Page loading...
+                        Page loading...
                     </div>
                 }
             >
